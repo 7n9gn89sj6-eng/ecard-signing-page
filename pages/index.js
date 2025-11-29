@@ -64,7 +64,7 @@ export default function Home() {
         />
 
         <button 
-          type="submit" 
+          type="submit"
           style={{
             marginTop: "10px",
             padding: "10px 20px",
@@ -73,4 +73,33 @@ export default function Home() {
             border: "none",
             borderRadius: "5px",
             cursor: "pointer"
+          }}
+        >
+          Add to Card
+        </button>
+      </form>
 
+      <hr />
+
+      <h2 style={{ marginBottom: "20px" }}>Messages</h2>
+
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {signatures.map((sig, index) => (
+          <li
+            key={index}
+            style={{
+              marginBottom: "15px",
+              padding: "10px",
+              border: "1px solid #ddd",
+              borderRadius: "5px",
+              background: "#fafafa"
+            }}
+          >
+            <strong>{sig.name}:</strong> {sig.message}
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  );
+}
