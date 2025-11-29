@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You E-Card – Sign Here</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background:#f2f2f2; 
+      margin:0; 
+      padding:20px; 
+    }
+    .container { 
+      max-width:800px; 
+      margin:auto; 
+      background:white; 
+      padding:20px; 
+      border-radius:8px; 
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    img { 
+      width:100%; 
+      border-radius:6px; 
+      display:block;
+      margin-bottom:20px;
+    }
+    h2 { 
+      text-align:center; 
+      margin-top:0;
+    }
+    #signatures { 
+      margin-top:20px; 
+      border-top:1px solid #ddd; 
+      padding-top:10px;
+    }
+    .sig { 
+      border-bottom:1px solid #eee; 
+      padding:10px 0; 
+    }
+    label { 
+      font-weight:bold; 
+      display:block; 
+      margin-top:10px;
+    }
+    input, textarea { 
+      width:100%; 
+      padding:8px; 
+      margin:5px 0 10px; 
+      box-sizing:border-box;
+      border:1px solid #ccc;
+      border-radius:4px;
+    }
+    button { 
+      padding:10px 20px; 
+      font-size:16px; 
+      cursor:pointer; 
+      border:none; 
+      border-radius:4px; 
+      background:#333; 
+      color:white;
+    }
+    button:hover {
+      opacity:0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Ensure ecard.jpg is in the same folder as this file -->
+    <img src="ecard.jpg" alt="ecard">
+
+    <h2>Add Your Message</h2>
+
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name">
+
+    <label for="msg">Message</label>
+    <textarea id="msg" rows="3" placeholder="Write a short message"></textarea>
+
+    <button onclick="addSig()">Add to Card</button>
+
+    <div id="signatures"></div>
+  </div>
+
+  <script>
+    function addSig(){
+      const n = document.getElementById('name').value.trim();
+      const m = document.getElementById('msg').value.trim();
+
+      if(!n || !m) {
+        alert("Please enter both your name and a message.");
+        return;
+      }
+
+      const div = document.createElement('div');
+      div.className = "sig";
+      div.innerHTML = "<strong>" + escapeHtml(n) + "</strong><br>" + escapeHtml(m);
+
+      document.getElementById('signatures').appendChild(div);
+
+      // Clear the fields
+      document.getElementById('name').value = "";
+      document.getElementById('msg').value = "";
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
