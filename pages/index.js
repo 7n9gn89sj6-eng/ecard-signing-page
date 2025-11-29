@@ -72,4 +72,5 @@ export default function Home() {
             color: "#fff",
             border: "none",
             borderRadius: "5px",
-            cursor: "point
+            cursor: "pointer"
+
